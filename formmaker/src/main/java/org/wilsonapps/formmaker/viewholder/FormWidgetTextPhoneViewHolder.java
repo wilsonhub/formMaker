@@ -12,7 +12,6 @@ import org.wilsonapps.formmaker.R;
 import org.wilsonapps.formmaker.listener.FormItemEditTextListener;
 import org.wilsonapps.formmaker.model.BaseFormWidget;
 
-
 /**
  * Created by Wilson.
  */
