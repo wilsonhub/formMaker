@@ -73,7 +73,7 @@ mFormBuilder.refreshView();
 
 ### Changelog
 
-####v1.0
+#### v1.0
 1. New FormWidget type: Switch.
 2. New way to define the form widgets.
 2. Can set Titles in alert dialogs for Date and Time type form widget.
