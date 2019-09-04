@@ -1,0 +1,2 @@
+include ':app', ':formmaker'
+rootProject.name='Android Utils'

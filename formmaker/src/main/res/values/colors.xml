@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //Color for Form
+    <color name="colorFormMasterHeaderBackground">#96BFD2</color>
+    <color name="colorFormMasterHeaderText">#000000</color>
+    <color name="colorFormMasterWidgetBackground">#FFFFFF</color>
+    <color name="colorFormMasterWidgetTextTitle">#222222</color>
+    <color name="colorFormMasterWidgetTextValue">#000000</color>
+    <color name="colorFormMasterDivider">#DDDDDD</color>
+</resources>
