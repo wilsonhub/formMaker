@@ -23,7 +23,7 @@ And add the dependency
 
 ```
 	dependencies {
-        implementation 'com.github.wils0n28:formMaker:${version}'
+        	implementation 'com.github.wils0n28:formMaker:${version}'
 	}
 ```
 
@@ -56,14 +56,14 @@ And add the dependency
 mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 mFormBuilder = new FormBuildHelper(this, mRecyclerView);
 
-// declare form wisgets
+// declare form widgets
 FormHeader header = FormHeader.createInstance("Personal Info");
-FormWidgetTextEmail element = FormWidgetTextEmail.createInstance().setTitle("Email").setHint("Enter Email");
+FormWidgetTextEmail widget = FormWidgetTextEmail.createInstance().setTitle("Email").setHint("Enter Email");
 
 // add them in a list
 List<FormObject> formItems = new ArrayList<>();
 formItems.add(header);
-formItems.add(element);
+formItems.add(widget);
 
 // build and display the form
 mFormBuilder.addFormWidgets(formItems);
@@ -75,9 +75,9 @@ mFormBuilder.refreshView();
 
 ####v1.0
 1. New FormWidget type: Switch.
-2. New way to define the form wisgets.
-2. Can set Titles in alert dialogs for Date and Time type form element.
-3. Can set Positive and negative texts for Date, Time and Switch type form wisgets.
+2. New way to define the form widgets.
+2. Can set Titles in alert dialogs for Date and Time type form widget.
+3. Can set Positive and negative texts for Date, Time and Switch type form widgets.
 4. Can set Date and Time formats (if unset, default format will be used).
 
 #### Header:
@@ -89,44 +89,44 @@ FormHeader header = FormHeader.createInstance("Personal Info");
 
 **General object format**
 ``` 'java'
-<Class> element = <Class>.createInstance()
+<Class> widget = <Class>.createInstance()
     .setTag(101123151) // optional tag to uniquely identify the elemnt for later use
     .setType(FormWidget.TYPE_PICKER_MULTI_CHECKBOX) // setting input type
     .setTitle("Pick your favourite Color") // setting title
     .setValue("Red") // setting value of the field, if any
     .setOptions(Green) // setting pickable options, if any
     .setHint("e.g. Red, Green etc") // setting hints, if any
-    .setRequired(false); // marking if the form element is required to be filled to make the form valid, include if needed
+    .setRequired(false); // marking if the form widget is required to be filled to make the form valid, include if needed
 ```
 
 **Samples:**
 ``` 'java'
 // email input
-FormWidgetTextEmail element = FormWidgetTextEmail.createInstance().setTitle("Email").setHint("Enter Email");
+FormWidgetTextEmail widget = FormWidgetTextEmail.createInstance().setTitle("Email").setHint("Enter Email");
 
 // phone number input
-FormWidgetTextPhone element = FormWidgetTextPhone.createInstance().setTitle("Phone").setValue("+8801712345678");
+FormWidgetTextPhone widget = FormWidgetTextPhone.createInstance().setTitle("Phone").setValue("+8801712345678");
 
 // single line text input
-FormWidgetTextSingleLine element = FormWidgetTextSingleLine.createInstance().setTitle("Location").setValue("Dhaka");
+FormWidgetTextSingleLine widget = FormWidgetTextSingleLine.createInstance().setTitle("Location").setValue("Dhaka");
 
 // multi line text input (default 4)
-FormWidgetTextMultiLine element = FormWidgetTextMultiLine.createInstance().setTitle("Address");
+FormWidgetTextMultiLine widget = FormWidgetTextMultiLine.createInstance().setTitle("Address");
 
-// number element input
-FormWidgetTextNumber element = FormWidgetTextNumber.createInstance().setTitle("Zip Code").setValue("1000");
+// number widget input
+FormWidgetTextNumber widget = FormWidgetTextNumber.createInstance().setTitle("Zip Code").setValue("1000");
 
 // date picker input
-FormWidgetPickerDate element = FormWidgetPickerDate.createInstance().setTitle("Date").setDateFormat("MMM dd, yyyy");
+FormWidgetPickerDate widget = FormWidgetPickerDate.createInstance().setTitle("Date").setDateFormat("MMM dd, yyyy");
 
 // time picker input
-FormWidgetPickerTime element = FormWidgetPickerTime.createInstance().setTitle("Time").setTimeFormat("KK hh");
+FormWidgetPickerTime widget = FormWidgetPickerTime.createInstance().setTitle("Time").setTimeFormat("KK hh");
 
 // password input
-FormWidgetTextPassword element = FormWidgetTextPassword.createInstance().setTitle("Password").setValue("abcd1234");
+FormWidgetTextPassword widget = FormWidgetTextPassword.createInstance().setTitle("Password").setValue("abcd1234");
 
 // switch input
-FormWidgetSwitch element = FormWidgetSwitch.createInstance().setTitle("Frozen?").setSwitchTexts("Yes", "No");
+FormWidgetSwitch widget = FormWidgetSwitch.createInstance().setTitle("Frozen?").setSwitchTexts("Yes", "No");
 
 // single item picker input
 List<String> colors = new ArrayList<>();
@@ -134,7 +134,7 @@ colors.add("Red");
 colors.add("Green");
 colors.add("Yellow");
 colors.add("Pink");
-FormWidgetPickerSingle element = FormWidgetPickerSingle.createInstance().setTitle("Single Color").setOptions(colors).setPickerTitle("Pick any Color");
+FormWidgetPickerSingle widget = FormWidgetPickerSingle.createInstance().setTitle("Single Color").setOptions(colors).setPickerTitle("Pick any Color");
 
 // multiple items picker input
 List<String> colors = new ArrayList<>();
@@ -142,10 +142,10 @@ colors.add("Red");
 colors.add("Green");
 colors.add("Yellow");
 colors.add("Pink");
-FormWidgetPickerMulti element = FormWidgetPickerMulti.createInstance().setTitle("Multi Color").setOptions(colors).setPickerTitle("Pick one or more color").setNegativeText("clear");
+FormWidgetPickerMulti widget = FormWidgetPickerMulti.createInstance().setTitle("Multi Color").setOptions(colors).setPickerTitle("Pick one or more color").setNegativeText("clear");
 ```
 
-### Set form element value change listener to get changed value instantly
+### Set form widget value change listener to get changed value instantly
 While creating new instance of FormBuildHelper, add a listener in the constructor
 
 Have a look at the example code for details
@@ -160,16 +160,16 @@ FormBuildHelper mFormBuilder = new FormBuildHelper(this, mRecyclerView, new OnFo
 );
 ```
 
-### Set unique tags for form wisgets (for later value retrieval)
-Just add a unique tag for the element
+### Set unique tags for form widgets (for later value retrieval)
+Just add a unique tag for the widget
 ``` 'java'
-FormWidget element = FormWidget.createInstance()
-    .setTag(2149) // unique tag number to identify this element
+FormWidget widget = FormWidget.createInstance()
+    .setTag(2149) // unique tag number to identify this widget
     .setType(FormWidget.TYPE_PICKER_MULTI_CHECKBOX)
     .setTitle("Pick your favourite fruit");
 ```
 
-### Get value for unique form wisgets
+### Get value for unique form widgets
 Use the unique tag assigned earlier to retrieve value (See examples in this repo)
 ``` 'java'
 FormWidget targetWidget = mFormBuilder.getFormWidget(2149);
@@ -177,7 +177,7 @@ String targetValue = targetWidget.getValue();
 ```
 
 ### Check if form is valid
-Use this method if you need to check whether the required wisgets of the form is completed
+Use this method if you need to check whether the required widgets of the form is completed
 ```'java'
 mFormBuilder.isValidForm(); // returns boolean whether the form is valid or not
 ```
@@ -194,7 +194,7 @@ If you want to change the colors, just override the colors in your **colors.xml*
 ```
 
 ### Form UI change
-If you want to change how the forms look, just override the layout xml named form_element.xml and/or form_element_header.xml in your project.
+If you want to change how the forms look, just override the layout xml named form_widget.xml and/or form_widget_header.xml in your project.
 
 Just make sure to keep the ID name same as it is in the library for the components.
 ```
